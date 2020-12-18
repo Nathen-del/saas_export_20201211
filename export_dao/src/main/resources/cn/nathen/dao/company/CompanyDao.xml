@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--名称空间：接口的全类名-->
+<mapper namespace="cn.nathen.dao.company.CompanyDao">
+
+    <!--由于数据库表的字段名与实体类的属性名不对应，所以自定义结果集-->
+    <resultMap id="BaseRResultMap" type="cn.nathen.domain.company.Company" >
+        <id column="id" property="id"/>
+        <!--数据库字段与实体类字段, 关联名不一样的-->
+        <result column="expiration_date" property="expirationDate"/>
+        <result column="license_id" property="licenseId"/>
+        <result column="company_size" property="companySize"/>
+    </resultMap>
+
+
+    <!--查找所有的企业 ,  注意： 如果使用结果集，select标签需要使用ResultMap而不是ResultType-->
+    <select id="findAll" resultMap="BaseRResultMap">
+        select * from ss_company
+    </select>
+
+
+</mapper>
